@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -24,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className="h-full dark">
+      <body className={cn("antialiased relative h-full font-sans", geistSans.variable, geistMono.variable)}>
+        <main className="relative flex flex-col min-h-dvh">
+          <div className="flex-1 flex-grow">{children}</div>
+        </main>
       </body>
     </html>
   );
