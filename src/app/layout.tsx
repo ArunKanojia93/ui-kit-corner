@@ -1,3 +1,4 @@
+import { Toggle } from "@/components/Toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -25,8 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full dark">
+    <html lang="en" className="h-full">
       <body className={cn("antialiased relative h-full font-sans", geistSans.variable, geistMono.variable)}>
+        <Toggle />
         <main className="relative flex flex-col min-h-dvh">
           <div className="flex-1 flex-grow">{children}</div>
         </main>
