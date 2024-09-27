@@ -6,9 +6,7 @@ export const Toggle = () => {
       onClick={() => {
         document.documentElement.classList.toggle("dark");
       }}
-      className="absolute left-0 top-0 z-auto rounded-full bg-foreground text-background w-10 h-10"
-    >
-      T
-    </button>
+      className="absolute left-0 top-0 z-[99999] rounded-full bg-foreground text-background w-3 h-3"
+    ></button>
   );
 };
