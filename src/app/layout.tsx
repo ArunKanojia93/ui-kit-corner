@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 import { Toggle } from "@/components/Toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -31,8 +32,10 @@ export default function RootLayout({
       <body className={cn("antialiased relative h-full font-sans", geistSans.variable, geistMono.variable)}>
         <Toggle />
         <main className="relative flex flex-col min-h-dvh">
-          <Navbar />
-          <div className="flex-1 flex-grow">{children}</div>
+          <Providers>
+            <Navbar />
+            <div className="flex-1 flex-grow">{children}</div>
+          </Providers>
         </main>
       </body>
     </html>

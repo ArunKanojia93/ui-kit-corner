@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { AuthValidationSchema, TAuthCredentialsValidation } from "@/lib/validators/accountCredentialsValidator";
+import { trpc } from "@/trcp/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -20,8 +21,10 @@ const Page = () => {
     resolver: zodResolver(AuthValidationSchema),
   });
 
+  const { mutate } = trpc.auth.createPayloadUser.useMutation({});
+
   const onSubmit = ({ email, password }: TAuthCredentialsValidation) => {
-    console.log({ email, password });
+    mutate({ email, password });
   };
 
   return (
@@ -43,6 +46,7 @@ const Page = () => {
               <div className="grid gap-1 py-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                  type="email"
                   {...register("email")}
                   className={cn({
                     "focus-visble:ring-destructive": errors.email,
@@ -53,6 +57,7 @@ const Page = () => {
               <div className="grid gap-1 py-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
+                  type="password"
                   {...register("password")}
                   className={cn({
                     "focus-visble:ring-destructive": errors.password,
