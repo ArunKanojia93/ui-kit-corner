@@ -4,6 +4,7 @@ import { Toggle } from "@/components/Toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -37,6 +38,8 @@ export default function RootLayout({
             <div className="flex-1 flex-grow">{children}</div>
           </Providers>
         </main>
+
+        <Toaster position="top-center" richColors duration={3000} />
       </body>
     </html>
   );

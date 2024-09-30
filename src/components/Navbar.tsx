@@ -1,19 +1,25 @@
+import { getServerSideUser } from "@/lib/payload-utils";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import Cart from "./Cart";
 import { Icons } from "./Icons";
 import MaxWidthWrapper from "./MaxWidthWrapper";
+import MobileNav from "./MobileNav";
 import NavItems from "./NavItems";
 import { buttonVariants } from "./ui/button";
+import UserAccountNav from "./UserAccountNav";
 
-const Navbar = () => {
-  const user = null;
+const Navbar = async () => {
+  const nextCookies = cookies();
+  const { user } = await getServerSideUser(nextCookies);
+
   return (
     <div className="bg-background sticky top-0 inset-x-0 h-16 z-50">
       <header className="relative bg-background">
         <MaxWidthWrapper>
           <div className="border-b border-border">
             <div className="flex h-16 items-center">
-              {/* TODO: Mobile Nav */}
+              <MobileNav />
 
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
@@ -36,7 +42,7 @@ const Navbar = () => {
                   {user ? null : <span className="h-6 w-px bg-muted-foreground" aria-hidden="true" />}
 
                   {user ? (
-                    <p>Hi</p>
+                    <UserAccountNav user={user} />
                   ) : (
                     <Link href="/sign-up" className={buttonVariants({ variant: "ghost" })}>
                       Create Account

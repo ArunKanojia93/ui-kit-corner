@@ -40,6 +40,33 @@ export const authRouter = router({
     };
   }),
 
+  login: publicProcedure.input(AuthValidationSchema).mutation(async ({ input, ctx: { res } }) => {
+    const { email, password } = input;
+
+    const payload = await getPayloadClient();
+
+    try {
+      await payload.login({
+        collection: "users",
+        data: {
+          email,
+          password,
+        },
+        res,
+      });
+
+      return {
+        success: true,
+      };
+    } catch (err) {
+      console.error(err);
+      throw new TRPCError({
+        code: "UNAUTHORIZED",
+        message: "Invalid email or password",
+      });
+    }
+  }),
+
   verifyEmail: publicProcedure.input(z.object({ token: z.string() })).query(async ({ input }) => {
     const { token } = input;
     const payload = await getPayloadClient();
