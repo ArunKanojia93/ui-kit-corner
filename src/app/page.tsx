@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import ProductReel from "@/components/ProductReel";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { BadgeCheck, ShieldCheck, UserRoundCheck } from "lucide-react";
 import Link from "next/link";
@@ -41,6 +42,7 @@ export default function Home() {
         </div>
 
         {/* TODO: List Products */}
+        <ProductReel query={{ limit: 4 }} title="Trending Products" href="/products" />
       </MaxWidthWrapper>
 
       <section className="border-t bg-secondary">
