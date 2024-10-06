@@ -1,6 +1,6 @@
 import { BeforeChangeHook } from "payload/dist/collections/config/types";
 import { Access, CollectionConfig } from "payload/types";
-import { User } from "../payload-types";
+import { Order, User } from "../payload-types";
 
 const addUser: BeforeChangeHook = ({ req, data }) => {
   const user = req.user as User | null;
@@ -36,7 +36,7 @@ const yourOwnAndPurchased: Access = async ({ req }) => {
     },
   });
 
-  const purchasedProductFileIds = orders
+  const purchasedProductFileIds = (orders as unknown as Order[])
     .map((order) => {
       return order.products.map((product) => {
         if (typeof product === "string") return req.payload.logger.error("Search depth not sufficient to find purchased file IDs");

@@ -18,9 +18,7 @@ const Navbar = async () => {
       <header className="relative bg-background">
         <MaxWidthWrapper>
           <div className="border-b border-border">
-            <div className="flex h-16 items-center">
-              <MobileNav />
-
+            <div className="flex h-16 items-center w-full">
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
                   <Icons.Logo className="h-10 w-10" />
@@ -31,7 +29,9 @@ const Navbar = async () => {
                 <NavItems />
               </div>
 
-              <div className="ml-auto flex items-center">
+              <MobileNav />
+
+              <div className="hidden ml-auto lg:flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {user ? null : (
                     <Link href="/sign-in" className={buttonVariants({ variant: "ghost" })}>

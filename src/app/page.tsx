@@ -41,7 +41,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* TODO: List Products */}
         <ProductReel query={{ limit: 4 }} title="Trending Products" href="/products" />
       </MaxWidthWrapper>
 

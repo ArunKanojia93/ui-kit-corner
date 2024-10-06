@@ -49,8 +49,8 @@ const Page = async ({ params }: PageProps) => {
   const validUrls = product.images.map(({ image }) => (typeof image === "string" ? image : image.url)).filter(Boolean) as string[];
 
   return (
-    <MaxWidthWrapper className="bg-white">
-      <div className="bg-white">
+    <MaxWidthWrapper className="bg-background">
+      <div className="bg-background">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           {/* Product Details */}
           <div className="lg:max-w-lg lg:self-end">
@@ -58,7 +58,7 @@ const Page = async ({ params }: PageProps) => {
               {BREADCRUMBS.map((breadcrumb, i) => (
                 <li key={breadcrumb.href}>
                   <div className="flex items-center text-sm">
-                    <Link href={breadcrumb.href} className="font-medium text-sm text-muted-foreground hover:text-gray-900">
+                    <Link href={breadcrumb.href} className="font-medium text-sm text-muted-foreground hover:text-foreground">
                       {breadcrumb.name}
                     </Link>
                     {i !== BREADCRUMBS.length - 1 ? (
@@ -72,14 +72,14 @@ const Page = async ({ params }: PageProps) => {
             </ol>
 
             <div className="mt-4">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{product.name}</h1>
+              <h1 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">{product.name}</h1>
             </div>
 
             <section className="mt-4">
               <div className="flex items-center">
-                <p className="font-medium text-gray-900">{formatPrice(product.price)}</p>
+                <p className="font-medium text-foreground">{formatPrice(product.price)}</p>
 
-                <div className="ml-4 border-l text-muted-foreground border-gray-300 pl-4">{label}</div>
+                <div className="ml-4 border-l text-foreground border-gray-300 pl-4">{label}</div>
               </div>
 
               <div className="mt-4 space-y-6">
