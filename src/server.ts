@@ -67,8 +67,6 @@ const start = async () => {
 
   app.use((req, res) => nextHandler(req, res));
 
-  app.use(bodyParser.json());
-
   nextApp.prepare().then(() => {
     payload.logger.info(`Listening on ${PORT}`);
 
